@@ -1,28 +1,29 @@
 package com.ifmg.usuarios.controller;
 
 import com.ifmg.usuarios.dto.UsuarioDto;
-import com.ifmg.usuarios.service.SalvarUsuarioService;
+import com.ifmg.usuarios.service.EditaUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SalvarUsuarioController {
+public class EditaUsuarioController {
 
     @Autowired
-    private SalvarUsuarioService salvarUsuarioService;
+    private EditaUsuarioService editaUsuarioService;
 
-    @PostMapping
-    public ResponseEntity<Object> salvarUsuario(@RequestBody UsuarioDto usuarioDto) {
+    @PutMapping
+    public ResponseEntity<Object> editaUsuario(@RequestBody UsuarioDto usuarioDto) {
 
-        salvarUsuarioService.salvarUsuario(
+        editaUsuarioService.editaUsuario(
+                usuarioDto.getId(),
                 usuarioDto.getNome(),
                 usuarioDto.getCpf(),
                 usuarioDto.getDataDeNascimento()
         );
 
-        return ResponseEntity.ok().body("Usuário foi salvo no banco!");
+        return ResponseEntity.ok().body("Usuário editado com sucesso!");
     }
 }

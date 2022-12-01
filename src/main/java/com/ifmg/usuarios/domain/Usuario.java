@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,5 +21,4 @@ public class Usuario {
     private LocalDate dataDeNascimento;
     private LocalDateTime dataDeCriacao;
     private LocalDateTime dataDeAtualizacao;
-
 }
